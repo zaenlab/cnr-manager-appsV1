@@ -16,10 +16,11 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Pencil } from "lucide-react";
 
 const mockContainers = [
   {
+    id: 1,
     number: "MSKU123456",
     size: "20'",
     type: "Dry",
@@ -28,6 +29,7 @@ const mockContainers = [
     repairTeam: "Team A",
   },
   {
+    id: 2,
     number: "TGHU789012",
     size: "40'",
     type: "Reefer",
@@ -58,6 +60,10 @@ export const Containers = () => {
 
     return matchesSearch && matchesStatus && matchesTeam;
   });
+
+  const handleEdit = (containerId: number) => {
+    navigate(`/containers/edit/${containerId}`);
+  };
 
   return (
     <div className="p-4 space-y-4">
@@ -132,12 +138,13 @@ export const Containers = () => {
               <TableHead>Owner</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Team</TableHead>
+              <TableHead>Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {filteredContainers.length > 0 ? (
-              filteredContainers.map((container, index) => (
-                <TableRow key={index}>
+              filteredContainers.map((container) => (
+                <TableRow key={container.id}>
                   <TableCell>{container.number}</TableCell>
                   <TableCell>{container.size}/{container.type}</TableCell>
                   <TableCell>{container.owner}</TableCell>
@@ -152,11 +159,20 @@ export const Containers = () => {
                     </span>
                   </TableCell>
                   <TableCell>{container.repairTeam}</TableCell>
+                  <TableCell>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => handleEdit(container.id)}
+                    >
+                      <Pencil className="h-4 w-4" />
+                    </Button>
+                  </TableCell>
                 </TableRow>
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={5} className="text-center py-8">
+                <TableCell colSpan={6} className="text-center py-8">
                   No containers found matching your criteria
                 </TableCell>
               </TableRow>

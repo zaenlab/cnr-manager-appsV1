@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import { Containers } from "./pages/Containers";
 import { AddContainer } from "./pages/containers/AddContainer";
+import { EditContainer } from "./pages/containers/EditContainer";
 import { Dashboard } from "./pages/reports/Dashboard";
 import { TeamComparison } from "./pages/reports/TeamComparison";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -28,6 +29,7 @@ const App = () => (
                 <Route path="/" element={<Index />} />
                 <Route path="/containers" element={<Containers />} />
                 <Route path="/containers/new" element={<AddContainer />} />
+                <Route path="/containers/edit/:id" element={<EditContainer />} />
                 <Route path="/reports" element={<Dashboard />} />
                 <Route path="/reports/teams" element={<TeamComparison />} />
                 <Route path="/settings" element={<Settings />} />
