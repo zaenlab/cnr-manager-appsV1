@@ -11,6 +11,7 @@ import { Dashboard } from "./pages/reports/Dashboard";
 import { TeamComparison } from "./pages/reports/TeamComparison";
 import { ThemeProvider } from "@/components/theme-provider";
 import { BottomNavigation } from "@/components/BottomNavigation";
+import Settings from "./pages/Settings";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
                 <Route path="/containers/new" element={<AddContainer />} />
                 <Route path="/reports" element={<Dashboard />} />
                 <Route path="/reports/teams" element={<TeamComparison />} />
+                <Route path="/settings" element={<Settings />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
