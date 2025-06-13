@@ -4,22 +4,40 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --border: 214.3 31.8% 91.4%;
+    --background: 120 23% 97%; /* Very soft green background */
+    --foreground: 120 10% 15%; /* Dark green-gray text */
+    --border: 120 20% 90%; /* Soft green border */
+
+    --primary: 120 40% 35%; /* Primary soft green */
+    --primary-foreground: 0 0% 100%; /* White text on primary */
+
+    --secondary: 120 30% 90%; /* Lighter green for secondary */
+    --secondary-foreground: 120 10% 20%; /* Darker text on secondary */
+
+    --accent: 120 50% 40%; /* Slightly brighter green for accents */
+    --accent-foreground: 0 0% 100%; /* White text on accent */
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
+    --background: 120 15% 10%; /* Dark green background */
+    --foreground: 120 20% 90%; /* Light green text */
+    --border: 120 10% 20%; /* Darker green border */
+
+    --primary: 120 50% 30%; /* Darker primary green */
+    --primary-foreground: 0 0% 100%; /* White text on primary */
+
+    --secondary: 120 20% 20%; /* Dark secondary green */
+    --secondary-foreground: 120 20% 90%; /* Light text on secondary */
+
+    --accent: 120 60% 35%; /* Brighter accent green */
+    --accent-foreground: 0 0% 100%; /* White text on accent */
   }
-}
 
-* {
-  @apply border-border;
-}
+  * {
+    @apply border-border;
+  }
 
-body {
-  @apply bg-background text-foreground;
+  body {
+    @apply bg-background text-foreground;
+  }
 }
