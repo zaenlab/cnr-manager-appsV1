@@ -18,10 +18,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
 
-// Mock data - in real app would come from API
 const mockContainers = [
   {
-    id: "1",
     number: "MSKU123456",
     size: "20'",
     type: "Dry",
@@ -29,11 +27,8 @@ const mockContainers = [
     status: "Under Repair",
     repairTeam: "Team A",
     location: "Yard 1",
-    notes: "Needs welding",
-    lastUpdated: "2023-11-15",
   },
   {
-    id: "2",
     number: "TGHU789012",
     size: "40'",
     type: "Reefer",
@@ -41,20 +36,6 @@ const mockContainers = [
     status: "AV Passed",
     repairTeam: "Team B",
     location: "Yard 2",
-    notes: "Completed",
-    lastUpdated: "2023-11-10",
-  },
-  {
-    id: "3",
-    number: "CAIU345678",
-    size: "45'",
-    type: "Open Top",
-    owner: "PT. DEF",
-    status: "Ready for AV",
-    repairTeam: "Team C",
-    location: "Yard 3",
-    notes: "Waiting for inspection",
-    lastUpdated: "2023-11-18",
   },
 ];
 
@@ -84,12 +65,7 @@ export const Containers = () => {
     <div className="p-4 space-y-4">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Container Management</h1>
-        <div className="space-x-2">
-          <Button variant="outline" onClick={() => navigate("/reports")}>
-            View Reports
-          </Button>
-          <Button onClick={() => navigate("/containers/new")}>Add Container</Button>
-        </div>
+        <Button onClick={() => navigate("/containers/new")}>Add Container</Button>
       </div>
 
       <div className="flex flex-col md:flex-row gap-2">
@@ -159,13 +135,12 @@ export const Containers = () => {
               <TableHead>Status</TableHead>
               <TableHead>Team</TableHead>
               <TableHead>Location</TableHead>
-              <TableHead>Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {filteredContainers.length > 0 ? (
-              filteredContainers.map((container) => (
-                <TableRow key={container.id}>
+              filteredContainers.map((container, index) => (
+                <TableRow key={index}>
                   <TableCell>{container.number}</TableCell>
                   <TableCell>{container.size}/{container.type}</TableCell>
                   <TableCell>{container.owner}</TableCell>
@@ -181,20 +156,11 @@ export const Containers = () => {
                   </TableCell>
                   <TableCell>{container.repairTeam}</TableCell>
                   <TableCell>{container.location}</TableCell>
-                  <TableCell>
-                    <Button 
-                      variant="ghost" 
-                      size="sm"
-                      onClick={() => navigate(`/containers/${container.id}`)}
-                    >
-                      View
-                    </Button>
-                  </TableCell>
                 </TableRow>
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={7} className="text-center py-8">
+                <TableCell colSpan={6} className="text-center py-8">
                   No containers found matching your criteria
                 </TableCell>
               </TableRow>
