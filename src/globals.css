@@ -49,12 +49,12 @@
   }
 }
 
-/* Apply border styles directly without using @apply */
+/* Apply border styles using the CSS variable directly */
 * {
-  border-color: hsl(var(--border));
+  border-color: var(--border);
 }
 
 body {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
+  background-color: var(--background);
+  color: var(--foreground);
 }
