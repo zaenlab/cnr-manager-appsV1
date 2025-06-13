@@ -18,7 +18,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown, Pencil } from "lucide-react";
 
-// Initial mock data
 const initialContainers = [
   {
     id: 1,
@@ -52,20 +51,6 @@ export const Containers = () => {
   const statusOptions = ["Under Repair", "Ready for AV", "AV Passed", "AV Failed"];
   const teamOptions = ["Team A", "Team B", "Team C"];
 
-  // Function to update container data
-  const updateContainer = (updatedContainer: typeof initialContainers[0]) => {
-    setContainers(prevContainers => 
-      prevContainers.map(container => 
-        container.id === updatedContainer.id ? updatedContainer : container
-      )
-    );
-  };
-
-  // Function to add new container
-  const addContainer = (newContainer: typeof initialContainers[0]) => {
-    setContainers(prevContainers => [...prevContainers, newContainer]);
-  };
-
   const filteredContainers = containers.filter((container) => {
     const matchesSearch = container.number.toLowerCase().includes(searchTerm.toLowerCase()) ||
       container.owner.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -86,7 +71,115 @@ export const Containers = () => {
 
   return (
     <div className="p-4 space-y-4">
-      {/* ... rest of the component remains the same ... */}
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold">Container Management</h1>
+        <Button onClick={() => navigate("/containers/new")}>Add Container</Button>
+      </div>
+
+      <div className="flex flex-col md:flex-row gap-2">
+        <Input
+          placeholder="Search containers..."
+          className="flex-1"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" className="flex items-center gap-1">
+              Status <ChevronDown className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-56">
+            {statusOptions.map((status) => (
+              <DropdownMenuCheckboxItem
+                key={status}
+                checked={statusFilter.includes(status)}
+                onCheckedChange={(checked) => {
+                  setStatusFilter(checked
+                    ? [...statusFilter, status]
+                    : statusFilter.filter((s) => s !== status)
+                  );
+                }}
+              >
+                {status}
+              </DropdownMenuCheckboxItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" className="flex items-center gap-1">
+              Team <ChevronDown className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-56">
+            {teamOptions.map((team) => (
+              <DropdownMenuCheckboxItem
+                key={team}
+                checked={teamFilter.includes(team)}
+                onCheckedChange={(checked) => {
+                  setTeamFilter(checked
+                    ? [...teamFilter, team]
+                    : teamFilter.filter((t) => t !== team)
+                  );
+                }}
+              >
+                {team}
+              </DropdownMenuCheckboxItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+
+      <div className="rounded-md border">
+        <Table>
+          <TableHeader>
+            <TableRow className="bg-green-50">
+              <TableHead className="text-green-800">Container #</TableHead>
+              <TableHead className="text-green-800">Size/Type</TableHead>
+              <TableHead className="text-green-800">Owner</TableHead>
+              <TableHead className="text-green-800">Status</TableHead>
+              <TableHead className="text-green-800">Repair Team</TableHead>
+              <TableHead className="text-green-800">Notes</TableHead>
+              <TableHead className="text-green-800">Actions</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {filteredContainers.map((container) => (
+              <TableRow key={container.id} className="bg-gray-50 hover:bg-gray-100">
+                <TableCell>{container.number}</TableCell>
+                <TableCell>{container.size}/{container.type}</TableCell>
+                <TableCell>{container.owner}</TableCell>
+                <TableCell>
+                  <span className={`px-2 py-1 rounded-full text-xs ${
+                    container.status === "AV Passed" ? "bg-green-100 text-green-800" :
+                    container.status === "Under Repair" ? "bg-yellow-100 text-yellow-800" :
+                    container.status === "Ready for AV" ? "bg-blue-100 text-blue-800" :
+                    "bg-red-100 text-red-800"
+                  }`}>
+                    {container.status}
+                  </span>
+                </TableCell>
+                <TableCell>{container.repairTeam}</TableCell>
+                <TableCell className="max-w-xs truncate" title={container.notes}>
+                  {container.notes}
+                </TableCell>
+                <TableCell>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => handleEdit(container.id)}
+                  >
+                    <Pencil className="h-4 w-4" />
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </div>
   );
 };
