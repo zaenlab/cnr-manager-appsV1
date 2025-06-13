@@ -27,6 +27,7 @@ const mockContainers = [
     owner: "PT. ABC",
     status: "Under Repair",
     repairTeam: "Team A",
+    notes: "Needs paint work and door repair",
   },
   {
     id: 2,
@@ -36,6 +37,7 @@ const mockContainers = [
     owner: "PT. XYZ",
     status: "AV Passed",
     repairTeam: "Team B",
+    notes: "Completed all repairs, ready for delivery",
   },
 ];
 
@@ -50,7 +52,8 @@ export const Containers = () => {
 
   const filteredContainers = mockContainers.filter((container) => {
     const matchesSearch = container.number.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      container.owner.toLowerCase().includes(searchTerm.toLowerCase());
+      container.owner.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      container.notes.toLowerCase().includes(searchTerm.toLowerCase());
 
     const matchesStatus = statusFilter.length === 0 || 
       statusFilter.includes(container.status);
@@ -137,6 +140,7 @@ export const Containers = () => {
               <TableHead>Size/Type</TableHead>
               <TableHead>Owner</TableHead>
               <TableHead>Status</TableHead>
+              <TableHead>Notes</TableHead>
               <TableHead>Actions</TableHead>
             </TableRow>
           </TableHeader>
@@ -157,6 +161,9 @@ export const Containers = () => {
                       {container.status}
                     </span>
                   </TableCell>
+                  <TableCell className="max-w-xs truncate" title={container.notes}>
+                    {container.notes}
+                  </TableCell>
                   <TableCell>
                     <Button
                       variant="ghost"
@@ -170,7 +177,7 @@ export const Containers = () => {
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={5} className="text-center py-8">
+                <TableCell colSpan={6} className="text-center py-8">
                   No containers found matching your criteria
                 </TableCell>
               </TableRow>
