@@ -155,11 +155,11 @@ export const AddContainer = () => {
               name="repairTeam"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Repair Team *</FormLabel>
-                  <Select onValueChange={field.onChange} required>
+                  <FormLabel>Repair Team</FormLabel>
+                  <Select onValueChange={field.onChange}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select team" />
+                        <SelectValue placeholder="Select team (optional)" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
