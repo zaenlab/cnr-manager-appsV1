@@ -141,7 +141,6 @@ export const Containers = () => {
               <TableHead className="text-green-800">Size/Type</TableHead>
               <TableHead className="text-green-800">Owner</TableHead>
               <TableHead className="text-green-800">Status</TableHead>
-              <TableHead className="text-green-800">Repair Team</TableHead>
               <TableHead className="text-green-800">Notes</TableHead>
               <TableHead className="text-green-800">Actions</TableHead>
             </TableRow>
@@ -162,7 +161,6 @@ export const Containers = () => {
                     {container.status}
                   </span>
                 </TableCell>
-                <TableCell>{container.repairTeam}</TableCell>
                 <TableCell className="max-w-xs truncate" title={container.notes}>
                   {container.notes}
                 </TableCell>
