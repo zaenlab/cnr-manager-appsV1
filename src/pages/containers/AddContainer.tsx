@@ -53,18 +53,113 @@ export const AddContainer = () => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Other form fields remain the same... */}
+            <FormField
+              control={form.control}
+              name="number"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Container Number *</FormLabel>
+                  <FormControl>
+                    <Input {...field} required />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="size"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Size *</FormLabel>
+                  <Select onValueChange={field.onChange} required>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select size" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="20'">20'</SelectItem>
+                      <SelectItem value="40'">40'</SelectItem>
+                      <SelectItem value="45'">45'</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="type"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Type *</FormLabel>
+                  <Select onValueChange={field.onChange} required>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select type" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="Dry">Dry</SelectItem>
+                      <SelectItem value="Reefer">Reefer</SelectItem>
+                      <SelectItem value="Open Top">Open Top</SelectItem>
+                      <SelectItem value="Flat Rack">Flat Rack</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="owner"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Owner *</FormLabel>
+                  <FormControl>
+                    <Input {...field} required />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="status"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Status</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="Under Repair">Under Repair</SelectItem>
+                      <SelectItem value="Ready for AV">Ready for AV</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
             <FormField
               control={form.control}
               name="repairTeam"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Repair Team</FormLabel>
-                  <Select onValueChange={field.onChange}>
+                  <FormLabel>Repair Team *</FormLabel>
+                  <Select onValueChange={field.onChange} required>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select team (optional)" />
+                        <SelectValue placeholder="Select team" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -79,7 +174,23 @@ export const AddContainer = () => {
             />
           </div>
 
-          {/* Rest of the form remains the same... */}
+          <FormField
+            control={form.control}
+            name="notes"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Initial Notes</FormLabel>
+                <FormControl>
+                  <Textarea {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <div className="flex justify-end">
+            <Button type="submit">Add Container</Button>
+          </div>
         </form>
       </Form>
     </div>
