@@ -137,7 +137,6 @@ export const Containers = () => {
               <TableHead>Size/Type</TableHead>
               <TableHead>Owner</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead>Team</TableHead>
               <TableHead>Actions</TableHead>
             </TableRow>
           </TableHeader>
@@ -158,7 +157,6 @@ export const Containers = () => {
                       {container.status}
                     </span>
                   </TableCell>
-                  <TableCell>{container.repairTeam}</TableCell>
                   <TableCell>
                     <Button
                       variant="ghost"
@@ -172,7 +170,7 @@ export const Containers = () => {
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={6} className="text-center py-8">
+                <TableCell colSpan={5} className="text-center py-8">
                   No containers found matching your criteria
                 </TableCell>
               </TableRow>
