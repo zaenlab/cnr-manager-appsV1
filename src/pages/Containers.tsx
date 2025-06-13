@@ -26,7 +26,6 @@ const mockContainers = [
     owner: "PT. ABC",
     status: "Under Repair",
     repairTeam: "Team A",
-    location: "Yard 1",
   },
   {
     number: "TGHU789012",
@@ -35,7 +34,6 @@ const mockContainers = [
     owner: "PT. XYZ",
     status: "AV Passed",
     repairTeam: "Team B",
-    location: "Yard 2",
   },
 ];
 
@@ -134,7 +132,6 @@ export const Containers = () => {
               <TableHead>Owner</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Team</TableHead>
-              <TableHead>Location</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -155,12 +152,11 @@ export const Containers = () => {
                     </span>
                   </TableCell>
                   <TableCell>{container.repairTeam}</TableCell>
-                  <TableCell>{container.location}</TableCell>
                 </TableRow>
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={6} className="text-center py-8">
+                <TableCell colSpan={5} className="text-center py-8">
                   No containers found matching your criteria
                 </TableCell>
               </TableRow>

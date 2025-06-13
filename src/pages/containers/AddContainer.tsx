@@ -31,7 +31,6 @@ export const AddContainer = () => {
       owner: "",
       status: "Under Repair",
       repairTeam: "",
-      location: "",
       notes: "",
     },
   });
@@ -167,30 +166,6 @@ export const AddContainer = () => {
                       <SelectItem value="Team A">Team A</SelectItem>
                       <SelectItem value="Team B">Team B</SelectItem>
                       <SelectItem value="Team C">Team C</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="location"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Location *</FormLabel>
-                  <Select onValueChange={field.onChange} required>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select location" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="Yard 1">Yard 1</SelectItem>
-                      <SelectItem value="Yard 2">Yard 2</SelectItem>
-                      <SelectItem value="Yard 3">Yard 3</SelectItem>
-                      <SelectItem value="Workshop">Workshop</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
