@@ -5,7 +5,7 @@ export const BottomNavigation = () => {
   const location = useLocation();
   
   const tabs = [
-    { path: "/containers", icon: <Home size={20} />, label: "Home" },
+    { path: "/", icon: <Home size={20} />, label: "Home" },
     { path: "/containers", icon: <List size={20} />, label: "Containers" },
     { path: "/reports", icon: <BarChart size={20} />, label: "Reports" },
     { path: "/settings", icon: <Settings size={20} />, label: "Settings" },
@@ -19,7 +19,8 @@ export const BottomNavigation = () => {
             key={tab.path}
             to={tab.path}
             className={`flex flex-col items-center justify-center w-full h-full ${
-              location.pathname.startsWith(tab.path) 
+              location.pathname === tab.path || 
+              (tab.path !== '/' && location.pathname.startsWith(tab.path))
                 ? "text-blue-600 dark:text-blue-400" 
                 : "text-gray-500 dark:text-gray-400"
             }`}
