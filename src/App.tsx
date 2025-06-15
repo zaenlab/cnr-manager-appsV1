@@ -10,6 +10,7 @@ import { AddContainer } from "./pages/containers/AddContainer";
 import { EditContainer } from "./pages/containers/EditContainer";
 import { Dashboard } from "./pages/reports/Dashboard";
 import { TeamComparison } from "./pages/reports/TeamComparison";
+import { TeamProfiles } from "./pages/reports/TeamProfiles";
 import { ThemeProvider } from "@/components/theme-provider";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import Settings from "./pages/Settings";
@@ -32,6 +33,7 @@ const App = () => (
                 <Route path="/containers/edit/:id" element={<EditContainer />} />
                 <Route path="/reports" element={<Dashboard />} />
                 <Route path="/reports/teams" element={<TeamComparison />} />
+                <Route path="/reports/profiles" element={<TeamProfiles />} />
                 <Route path="/settings" element={<Settings />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>

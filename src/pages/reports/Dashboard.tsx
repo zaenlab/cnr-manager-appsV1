@@ -19,11 +19,17 @@ export const Dashboard = () => {
     <div className="p-4 space-y-4">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Repair Dashboard</h1>
-        <Button variant="outline" onClick={() => navigate("/reports/teams")}>
-          View Team Comparison
-        </Button>
+        <div className="space-x-2">
+          <Button variant="outline" onClick={() => navigate("/reports/teams")}>
+            Team Comparison
+          </Button>
+          <Button variant="outline" onClick={() => navigate("/reports/profiles")}>
+            Team Profiles
+          </Button>
+        </div>
       </div>
 
+      {/* Rest of the existing dashboard content remains the same */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <Card>
           <CardHeader>
