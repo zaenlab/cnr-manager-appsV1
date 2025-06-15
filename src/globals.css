@@ -4,32 +4,32 @@
 
 @layer base {
   :root {
-    --background: 120 23% 97%; /* Very soft green background */
-    --foreground: 120 10% 15%; /* Dark green-gray text */
-    --border: 120 20% 90%; /* Soft green border */
+    --background: 210 40% 98%; /* Soft blue background */
+    --foreground: 222.2 47.4% 11.2%; /* Dark text for contrast */
+    --border: 214.3 31.8% 91.4%; /* Light border */
 
-    --primary: 120 40% 35%; /* Primary soft green */
+    --primary: 210 40% 35%; /* Primary soft blue */
     --primary-foreground: 0 0% 100%; /* White text on primary */
 
-    --secondary: 120 30% 90%; /* Lighter green for secondary */
-    --secondary-foreground: 120 10% 20%; /* Darker text on secondary */
+    --secondary: 210 30% 90%; /* Lighter blue for secondary */
+    --secondary-foreground: 210 10% 20%; /* Darker text on secondary */
 
-    --accent: 120 50% 40%; /* Slightly brighter green for accents */
+    --accent: 210 50% 40%; /* Slightly brighter blue for accents */
     --accent-foreground: 0 0% 100%; /* White text on accent */
   }
 
   .dark {
-    --background: 120 15% 10%; /* Dark green background */
-    --foreground: 120 20% 90%; /* Light green text */
-    --border: 120 10% 20%; /* Darker green border */
+    --background: 210 15% 10%; /* Dark blue background */
+    --foreground: 210 20% 90%; /* Light text */
+    --border: 210 10% 20%; /* Darker border */
 
-    --primary: 120 50% 30%; /* Darker primary green */
+    --primary: 210 50% 30%; /* Darker primary blue */
     --primary-foreground: 0 0% 100%; /* White text on primary */
 
-    --secondary: 120 20% 20%; /* Dark secondary green */
-    --secondary-foreground: 120 20% 90%; /* Light text on secondary */
+    --secondary: 210 20% 20%; /* Dark secondary blue */
+    --secondary-foreground: 210 20% 90%; /* Light text on secondary */
 
-    --accent: 120 60% 35%; /* Brighter accent green */
+    --accent: 210 60% 35%; /* Brighter accent blue */
     --accent-foreground: 0 0% 100%; /* White text on accent */
   }
 
@@ -39,5 +39,17 @@
 
   body {
     @apply bg-background text-foreground;
+    background-color: rgba(235, 245, 255, 0.9); /* Soft blue with transparency */
+  }
+
+  /* Main content area styling */
+  main {
+    background-color: rgba(247, 251, 255, 0.8); /* Lighter soft blue with transparency */
+  }
+
+  /* Card styling */
+  .card {
+    background-color: rgba(255, 255, 255, 0.85); /* Slightly transparent white */
+    backdrop-filter: blur(4px); /* Soft blur effect */
   }
 }
